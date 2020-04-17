@@ -40,7 +40,7 @@ void insert(tree *bst, int n)
 
 int height(tree *bst);
 
-void print_level(tree *bst, int level, int init)
+void print_level(tree *bst, int level)
 {
 	if(bst->leaf)
 		return;
@@ -50,16 +50,8 @@ void print_level(tree *bst, int level, int init)
 	}
 	else
 	{
-		if(init&1)
-		{
-			print_level(bst->left, level-1, init);
-			print_level(bst->right, level-1, init);
-		}
-		else
-		{
-			 print_level(bst->right, level-1, init);
-                         print_level(bst->left, level-1, init);
-		}
+		print_level(bst->left, level-1);
+		print_level(bst->right, level-1);
 	}
 }
 
@@ -67,8 +59,8 @@ void print(tree *bst)
 {
 	int h = height(bst);
 
-	for(int i = 1; i <= h; i++)
-		print_level(bst, i, i);
+	for(int i = h; i >= 1; i--)
+		print_level(bst, i);
 
 }
 

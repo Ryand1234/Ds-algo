@@ -32,15 +32,66 @@ void keys(Map *m)
 	keys(m->index);
 }
 
+void insert(Map *map, int key, int value)
+{
+	
+	if(map->index == NULL)
+	{
+		map->key = key;
+		map->value = value;
+		map->index = init();
+	}
+	else {
+		insert(map->index, key, value);
+	}
+}
+
+
+void search(Map *map, int key)
+{
+//	printf('INIT Key: %d\n',map->key);
+	if(map->key == key)
+	{	printf("Value is %d\n",map->value);
+		return;
+	}
+	else
+	{
+		if(map->index == NULL)
+		{	
+			printf("Key doesnt Exist");
+			return;
+		}
+		else
+			search(map->index, key);
+	}
+}
+
+
+
 int main()
 {
-	int t;
+	int t,k,v;
 	Map *map = init();
-	map->key = 5;
-	map->value = 6;
-	map->index = init();
-	map->index->key = 8;
-	map->index->value = 9;
-	map->index->index = init();
-	keys(map);
+		
+	do{
+		printf("Enter Your Value: (0:Exit | 1:Insert | 2:Search)? ");
+		scanf("%d",&t);
+		switch(t)
+		{
+			case 0: break;
+			case 1: printf("Key: ");
+				scanf("%d",&k);
+				printf("Value: ");
+				scanf("%d",&v);
+				insert(map, k, v);
+				break;
+			case 2: printf("Search Key: ");
+				scanf("%d",&k);
+				search(map, k);
+				break;
+			default: printf("Wrong Choice\n");
+		}
+	}while(t != 0);	
+
+	return 0;
 }

@@ -1,5 +1,5 @@
 #include<stdlib.h>
-#include<cstdio>
+#include<stdio.h>
 
 struct tree {
 	int value;
@@ -40,26 +40,22 @@ void insert(tree *bst, int n)
 
 int height(tree *bst);
 
-void print_level(tree *bst, int level, int init)
+bool print_level(tree *bst, int level)
 {
 	if(bst->leaf)
-		return;
+		return false;
 	if(level == 1)
 	{
 		printf("%d->", bst->value);
+		return true;
 	}
 	else
 	{
-		if(init&1)
-		{
-			print_level(bst->left, level-1, init);
-			print_level(bst->right, level-1, init);
-		}
-		else
-		{
-			 print_level(bst->right, level-1, init);
-                         print_level(bst->left, level-1, init);
-		}
+		
+		bool k = print_level(bst->left, level-1);
+		if(!k)
+			k = print_level(bst->right, level-1);
+		return k;
 	}
 }
 
@@ -67,8 +63,17 @@ void print(tree *bst)
 {
 	int h = height(bst);
 
-	for(int i = 1; i <= h; i++)
-		print_level(bst, i, i);
+	printf("%d->",bst->value);
+	for(int i = 2; i <= h; i++)
+	{
+		bool left = print_level(bst, i);
+		if(left)
+			continue;
+		else
+		{
+			bool k = print_level(bst->right, i);
+		}
+	}
 
 }
 
