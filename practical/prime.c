@@ -8,8 +8,9 @@ int main()
 
 	for(guess = 2; guess*guess <= n; guess++)
 	{
-		if(n % guess != 0)
+		if(n % guess == 0)
 		{
+			printf("%d %d %d\n", n, guess, n % guess);
 			printf("%d is not a Prime Number\n", n);
 			return 0;
 		}

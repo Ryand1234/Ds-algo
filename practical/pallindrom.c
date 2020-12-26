@@ -4,7 +4,7 @@
 
 void pal(char s[])
 {
-	 int len = strlen(s);
+	 int len = strlen(s), k;
 
 	 for(int i = 0; i < len/2; i++)
 	 {
@@ -22,6 +22,7 @@ void pal(char s[])
 int main()
 {
 	char s[MAX];
+	printf("Enter String: ");
 	fgets(s, MAX, stdin);
 
 	pal(s);

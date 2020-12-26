@@ -15,8 +15,8 @@ void len(char str[])
 int main()
 {
 	char str[MAX];
+	printf("Enter String: ");
 	fgets(str, MAX, stdin);
-
 	len(str);
 	return 0; 
 }

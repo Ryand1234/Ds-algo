@@ -41,13 +41,11 @@ void binary(int n)
 
 void decimal(int n)
 {
-	printf("N: %d\n",n);
 	int t=0;
 	int decimal=0;
 	while(n)
 	{
 
-		printf("N: %d\n",n);
 		if((n%10 != 1 && n%10 != 0))
 		{
 			printf("Enter Valid Binary Number\n");
@@ -57,8 +55,6 @@ void decimal(int n)
 		{
 			decimal += power(t);
 		}
-
-		printf("DECIMAL: %d\n",decimal);
 		n /= 10;
 		t++;
 	}
