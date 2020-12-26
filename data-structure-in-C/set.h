@@ -1,11 +1,11 @@
-#include<cstdio>
-#include<cstdlib>
+#include<stdio.h>
+#include<stdlib.h>
 
-struct Set
+typedef struct Set
 {
 	int value;
 	struct Set *node;
-};
+} Set;
 
 Set *init()
 {
@@ -93,43 +93,4 @@ void remove(Set *set, int n)
 			}
 		}
 	}
-}
-
-
-int main()
-{
-	int t,n;
-	Set *set = init();
-	do{
-		printf("Enter your choice (0:Exit | 1:Insert | 2:Remove | 3:Size | 4:Print)? ");
-		scanf("%d",&t);
-		switch(t)
-		{
-			case 0: break;
-			case 1: printf("Enter Value: ");
-				scanf("%d",&n);
-				if(exist(set, n))
-					insert(set, n);
-				else
-					printf("Value already exists\n");
-				break;
-			case 2: printf("Enter Value to remove: ");
-				scanf("%d",&n);
-				if(set->value == n)
-				{
-					set = set->node;
-				}				
-				else
-					remove(set, n);
-				break;
-			case 3: n = size(set);
-				printf("Size is %d\n",n);
-				break;
-			case 4: print(set);
-				printf("\n");
-				break;
-			default: printf("Wrong Choice\n");
-		}
-	}while(t != 0);
-	return 0;
 }

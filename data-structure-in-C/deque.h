@@ -1,12 +1,12 @@
-#include<cstdio>
-#include<cstdlib>
+#include<stdio.h>
+#include<stdlib.h>
 
-struct Deque {
+typedef struct Deque {
 
 	int value;
 	struct Deque *back;
 
-};
+} Deque;
 
 Deque *init()
 {
@@ -149,55 +149,5 @@ int size(Deque *deque)
 		return 0;
 
 	return 1 + size(deque->back);
-
-}
-
-
-int main()
-{
-	int t,n;
-	
-	Deque *deque = init();
-
-	do{
-	
-		printf("Enter your choice (0:Exit | 1:Insert back | 2:Insert fornt | 3:Pop back | 4:Pop front | 5:Size | 6:print)? ");
-		scanf("%d",&t);
-
-		switch(t)
-		{
-			case 0: break;
-
-			case 2: printf("Enter Value: ");
-				scanf("%d",&n);
-				deque = insert_front(deque, n);
-				break;
-
-			case 1: printf("Enter Value: ");
-				scanf("%d",&n);
-				insert_back(deque, n);
-				break;
-
-			case 3: pop_back(deque);
-				break;
-
-			case 4: deque = pop_front(deque);
-				break;
-
-			case 5: printf("Size is %d\n", size(deque));
-				break;
-
-			case 6: printf("Deque: \n");
-				print(deque);
-				printf("\n");
-				break;
-
-			default: printf("Wrong Choice\n");
-	
-		}
-	
-	}while(t != 0);
-	
-	return 0;
 
 }
